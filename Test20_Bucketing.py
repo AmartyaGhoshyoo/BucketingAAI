@@ -52,7 +52,6 @@ question_num_map={
 }
 json_file = file_map[model_choice]
 TOTAL_QUESTIONS=question_num_map[model_choice]
-print(TOTAL_QUESTIONS)
 # ========== PROCESS FILE IF KEY PROVIDED ==========
 if key_input:
     fernet = get_fernet(key_input.encode())
@@ -61,9 +60,6 @@ if key_input:
         cluster_data = decrypt_json_file(json_file, fernet)
         if cluster_data:
             cluster_df = pd.DataFrame(cluster_data)
-            print(len(cluster_df['cluster_id'].unique()))
-            # TOTAL_QUESTIONS=int(cluster_data['num_questions'].sum())
-            # print(TOTAL_QUESTIONS)
             cluster_df = cluster_df.sort_values(by='num_questions', ascending=False)
 
             st.subheader("⁉️All Representative Questions")
