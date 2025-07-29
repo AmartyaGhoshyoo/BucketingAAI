@@ -6,7 +6,7 @@ import base64
 
 st.set_page_config(page_title="Encrypted Question Clusters", layout="wide")
 st.title("🔐 Secure Clustered Questions Viewer")
-st.caption("Designed by Amartya 👨🏻‍💻")
+st.caption("⛳️Designed by Amartya 👨🏻‍💻")
 
 
 # ========== ENCRYPTION HELPERS ==========
@@ -34,19 +34,19 @@ key_input = st.sidebar.text_input("Enter encryption key (Base64-encoded, 32 byte
 
 model_choice = st.sidebar.selectbox("🔎 Choose a Model", [
     "Model A BERTTopic",
-    "Model B K-Means-5",
-    "Model C K-Means-50"
+    "Model B K-Means-5 V.1",
+    "Model C K-Means-100 V.2"
 ])
 
 file_map = {
     "Model A BERTTopic": "clustered_questions_summary_model_bert.json.enc",
-    "Model B K-Means-5": "clustered_questions_summary_model_k5.json.enc",
-    "Model C K-Means-50": "clustered_questions_summary_model_k50.json.enc",
+    "Model B K-Means-5 V.1": "clustered_questions_summary_model_k5.json.enc",
+    "Model C K-Means-100 V.2": "clustered_questions_summary_model_k50.json.enc",
 }
 question_num_map={
     "Model A BERTTopic": 64967,
-    "Model B K-Means-5": 128803,
-    "Model C K-Means-50": 128803,
+    "Model B K-Means-5 V.1": 128803,
+    "Model C K-Means-100 V.2": 128803,
     
     
 }
@@ -61,11 +61,12 @@ if key_input:
         cluster_data = decrypt_json_file(json_file, fernet)
         if cluster_data:
             cluster_df = pd.DataFrame(cluster_data)
+            print(len(cluster_df['cluster_id'].unique()))
             # TOTAL_QUESTIONS=int(cluster_data['num_questions'].sum())
             # print(TOTAL_QUESTIONS)
             cluster_df = cluster_df.sort_values(by='num_questions', ascending=False)
 
-            st.subheader("🧠 All Representative Questions")
+            st.subheader("⁉️All Representative Questions")
             for idx, row in cluster_df.iterrows():
                 coverage_pct = (row['num_questions'] / TOTAL_QUESTIONS) * 100
                 with st.expander(f"{row['representative_question']} **📊** Covers: **{coverage_pct:.2f}%** of all questions"):
@@ -73,7 +74,7 @@ if key_input:
 
                     if st.button(f"🔗 View all {row['num_questions']} Questions", key=f"btn_{row['cluster_id']}"):
                         st.markdown("---")
-                        st.subheader(f"📌 All Questions for Cluster {row['cluster_id']}")
+                        st.subheader(f"📌 All Questions for Cluster id {row['cluster_id']}")
                         for q in row['all_questions']:
                             st.write(f"• {q}")
                         st.subheader("✅ End of Cluster")
