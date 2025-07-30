@@ -33,21 +33,21 @@ st.sidebar.header("🔐 Enter Decryption Key")
 key_input = st.sidebar.text_input("Enter encryption key (Base64-encoded, 32 bytes):", type="password")
 
 model_choice = st.sidebar.selectbox("🔎 Choose a Model", [
-    "Mode A BERTTopic-50 V.2"
+    "Mode A BERTTopic-50 V.2",
     "Model B BERTTopic-641 V.1",
     "Model C K-Means-5 V.1",
     "Model D K-Means-100 V.2"
 ])
 
 file_map = {
-    "Mode A BERTTopic-50 V.2":"new100.json.enc",
-    "Model B BERTTopic-641 V.1c": "clustered_questions_summary_model_bert.json.enc",
+    "Mode A BERTTopic-50 V.2": "new100.json.enc",
+    "Model B BERTTopic-641 V.1": "clustered_questions_summary_model_bert.json.enc",
     "Model B K-Means-5 V.1": "clustered_questions_summary_model_k5.json.enc",
     "Model C K-Means-100 V.2": "clustered_questions_summary_model_k50.json.enc",
 }
 question_num_map={
     "Mode A BERTTopic-50 V.2":128803,
-    "Model A BERTTopic": 64967,
+    "Model B BERTTopic-641 V.1": 64967,
     "Model B K-Means-5 V.1": 128803,
     "Model C K-Means-100 V.2": 128803,
 }
