@@ -41,7 +41,7 @@ model_choice = st.sidebar.selectbox("🔎 Choose a Model", [
 
 file_map = {
     "Mode A BERTTopic-50 V.2":"new100.json.enc",
-    "Model A BERTTopic": "clustered_questions_summary_model_bert.json.enc",
+    "Model B BERTTopic-641 V.1c": "clustered_questions_summary_model_bert.json.enc",
     "Model B K-Means-5 V.1": "clustered_questions_summary_model_k5.json.enc",
     "Model C K-Means-100 V.2": "clustered_questions_summary_model_k50.json.enc",
 }
