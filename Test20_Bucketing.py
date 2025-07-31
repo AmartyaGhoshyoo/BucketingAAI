@@ -46,7 +46,7 @@ file_map = {
     "Model C K-Means-100 V.2": "clustered_questions_summary_model_k50.json.enc",
 }
 question_num_map={
-    "Mode A BERTTopic-50 V.2":128803,
+    "Mode A BERTTopic-48 V.2":127681,
     "Model B BERTTopic-641 V.1": 64967,
     "Model B K-Means-5 V.1": 128803,
     "Model C K-Means-100 V.2": 128803,
